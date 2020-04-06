@@ -4,13 +4,16 @@ import java.text.MessageFormat;
 import java.util.Arrays;
 
 public class GradientDescent {
+
+    private double maxTrainingsteps;
     private double errorTolerance;
     private double learningRate;
     private double[] thetas;
 
-    public GradientDescent(double errorTolerance, double learningRate, double ... thetas) {
+    public GradientDescent(double errorTolerance, double learningRate, int maxTrainingsteps, double ... thetas) {
         this.errorTolerance = errorTolerance;
         this.learningRate = learningRate;
+        this.maxTrainingsteps = maxTrainingsteps;
         this.thetas = thetas;
     }
 
@@ -34,7 +37,7 @@ public class GradientDescent {
                 System.out.println(MessageFormat.format("Training Cycle: {0}", iterations));
             }
 
-        } while (Arrays.stream(deltas).map(Math::abs).sum() > errorTolerance);
+        } while (Arrays.stream(deltas).map(Math::abs).sum() > errorTolerance && iterations < maxTrainingsteps);
 
         System.out.println(MessageFormat.format("Done in {0} cycles", iterations));
     }

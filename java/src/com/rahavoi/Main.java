@@ -14,14 +14,16 @@ public class Main {
             {1, 400, 51000},
             {1, 500, 61500}
     };
-    
+
     public static void main(String[] args){
 
 
         double errorTolerance = 0.000001;
         double learningRate = 0.000001;
 
-        GradientDescent gradientDescent = new GradientDescent(errorTolerance, learningRate, 0, 0);
+        int maxTrainingSteps = 1000000;
+
+        GradientDescent gradientDescent = new GradientDescent(errorTolerance, learningRate, maxTrainingSteps, 0, 0);
         gradientDescent.train(TDATA);
 
         //TODO:
