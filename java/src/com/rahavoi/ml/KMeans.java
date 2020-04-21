@@ -26,8 +26,7 @@ public class KMeans
         } while (!Arrays.equals(centroids, newCentroids));
 
         Collection<List<Point>> finalClusters = clusters.values();
-
-        return finalClusters.stream().map(cluster -> cluster.toArray()).toArray(Point[][]::new);
+        return finalClusters.stream().filter(c -> c.size() > 0).map(cluster -> cluster.toArray()).toArray(Point[][]::new);
     }
 
     private Point getMean(List<Point> cluster){
